@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小鱼小鱼快快游，四面八方都自由</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 核心配色：治愈青色 + 高级柔和彩虹（无限可能主题） */
+        :root {
+            --main-cyan: #4ECDC4;    /* 主色：清新治愈青 */
+            --light-cyan: #F0FCFF;   /* 浅青底色 */
+            --rainbow: linear-gradient(90deg, #4ECDC4, #5D9CEC, #A8E6CF, #FFB6C1, #F7DC6F); /* 柔和彩虹渐变 */
+            --soft-shadow: 0 6px 20px rgba(78, 205, 196, 0.12); /* 青色柔阴影 */
+        }
+
+        body {
+            background: linear-gradient(to bottom, #ffffff, var(--light-cyan));
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #2A2A2A;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        /* 扉页：渐变标题 + 青色分割线，突出自由感 */
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            border-bottom: 2px solid var(--main-cyan);
+            padding-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            /* 彩虹渐变文字，高级不浮夸，象征无限可能 */
+            background: var(--rainbow);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow-flow 6s linear infinite;
+        }
+
+        /* 彩虹流动动画，强化无限可能的动态感 */
+        @keyframes rainbow-flow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--main-cyan);
+            font-style: italic;
+        }
+
+        .hero p:last-of-type {
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* 章节标题：彩虹下划线，清新高级 */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin: 3rem 0 1.5rem 0;
+            padding-bottom: 0.4rem;
+            border-bottom: 3px solid;
+            border-image: var(--rainbow) 1;
+            display: inline-block;
+        }
+
+        /* 哲学卡片：轻盈玻璃感 + 青色点缀，hover渐变 */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border-radius: 24px;
+            padding: 1.8rem;
+            box-shadow: var(--soft-shadow);
+            border: 1px solid rgba(78, 205, 196, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--main-cyan);
+            background: rgba(78, 205, 196, 0.05);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: var(--main-cyan);
+        }
+
+        .card p {
+            color: #444;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* 照片墙：青调滤镜，hover还原，呼应自由主题 */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .photo-grid img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 16px;
+            filter: hue-rotate(160deg) saturate(0.9); /* 青色统一滤镜 */
+            transition: all 0.4s ease;
+        }
+
+        .photo-grid img:hover {
+            filter: hue-rotate(0) saturate(1.1);
+            transform: scale(1.03);
+        }
+
+        /* 留白页：文字改为纯黑色 */
+        .blank-page {
+            background: rgba(78, 205, 196, 0.05);
+            border-radius: 32px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+            border: 2px dashed transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .blank-page::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 32px;
+            background: var(--rainbow);
+            z-index: -1;
+        }
+
+        .blank-page p {
+            font-size: 1.2rem;
+            color: #000; /* 纯黑色 */
+            font-style: italic;
+        }
+
+        /* 结尾：文字改为高级深灰色 */
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(78, 205, 196, 0.2);
+            font-size: 0.95rem;
+            color: #555; /* 高级深灰色 */
+            line-height: 1.8;
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 600px) {
+            .container { padding: 2rem 1rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .photo-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 扉页 -->
+    <div class="hero">
+        <h1>小鱼小鱼快快游，四面八方都自由</h1>
+        <p>—— 一些关于自由、选择和成为自己的碎片</p>
+        <p>Artemis&Jelly，于旅途中</p>
+    </div>
+
+    <!-- 人生哲学 -->
+    <div>
+        <div class="section-title">某些人生哲学</div>
+        <div class="philosophy-grid">
+        <div class="card"><h3>Perhaps you knew something</h3><p>What we do for ourselves dies with us. What we do for others that 's beyond us. <br><br> The all exchanges of us, the petty irritations, deadly revelations, flat announcements of disaster. <br><br> The grunts and poetry of life--Everything we've ever said. I heard a melody--All our destinies flying and swimming in blood and emptiness.</p></div>
+            <div class="card"><h3>外圆内方</h3><p>边界柔软，内核坚硬。不伤害别人，也不让别人伤害自己。</p></div>
+            <div class="card"><h3>清醒的自由</h3><p>自由不是为所欲为，是知道自己在做什么选择，并承担后果。</p></div>
+            <div class="card"><h3>选择的力量</h3><p>人生不是战场，是路口。选错了可以转弯，不选才会被困住。</p></div>
+            <div class="card"><h3>可以偶尔不强</h3><p>安全的时候，允许自己休息。强是为了保护自己，不是表演。</p></div>
+            <div class="card"><h3>继续走</h3><p>无论发生什么，路还在脚下。风会停，人会继续走。</p></div>
+        </div>
+    </div>
+
+    <!-- 旅途照片墙 -->
+    <div>
+        <div class="section-title">路上 · 瞬间</div>
+        <div class="photo-grid">
+            <img src="https://picsum.photos/id/104/400/400" alt="风景">
+            <img src="https://picsum.photos/id/106/400/400" alt="风景">
+            <img src="https://picsum.photos/id/15/400/400" alt="风景">
+            <img src="https://picsum.photos/id/96/400/400" alt="风景">
+            <img src="https://picsum.photos/id/29/400/400" alt="风景">
+            <img src="https://picsum.photos/id/39/400/400" alt="风景">
+        </div>
+        <p style="text-align: center; font-size: 0.8rem; color: #888; margin-top: 0.5rem;">（等我走过，这里会是真实的风景）</p>
+    </div>
+
+    <!-- 留白页 -->
+    <div class="blank-page">
+        <p>有些东西，现在还没有。<br>但也许某天，会有。</p>
+        <p>—— 等风来</p>
+    </div>
+
+    <!-- 结尾 -->
+    <div class="footer">
+        <p>谢谢你送我的春山。<br>我回赠你一片原野。不必追赶，风会带你去该去的地方。</p>
+        <p>Artemis · 2026年春</p>
+    </div>
+</div>
+</body>
+</html>
